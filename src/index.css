@@ -7,7 +7,6 @@
 
 html {
   font-family: "Inter", sans-serif;
-  font-size: 21.5px !important;
 }
 
 @supports (font-variation-settings: normal) {
