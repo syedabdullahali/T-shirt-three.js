@@ -87,7 +87,7 @@ const Home = () => {
 
         </motion.div> */}
         <div className='flex flex-col items-start justify-start w-1/2 h-full p-4 '>
-        <h1 className='font-black text-8xl '>
+        <h1 className='font-black text-7xl '>
                 <br className="hidden xl:block" /> UNLEASH YOUR STYLE
 
              </h1>

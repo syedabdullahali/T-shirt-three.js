@@ -271,19 +271,19 @@ console.log(image)
 }
 
 const checkClassVal = (val)=>{
-  return 'rounded '+ (selectedToll.includes(val)?"text-blue-500 p-1 border mt-2 bg-white border-blue-400 " :"p-1 mt-1 cursor-pointer  p-1 border mt-2 bg-white ")
+  return 'rounded text-[0.8rem] '+ (selectedToll.includes(val)?"text-blue-500 p-1 border mt-1 bg-white border-blue-400 " :"p-1 mt-1 cursor-pointer  p-1 border  bg-white ")
 }
 
   return (
     <div className="flex w-[600px]  ">
-      <nav className="p-2">
-        <h2 className="font-[700]">Shapes</h2>
+      <nav className="p-1">
+        <h2 className="font-[700] text-[0.8rem]">Shapes</h2>
         <ul>
           <li className={checkClassVal('Rectangle')} onClick={handaleTool}>Rectangle</li>
           <li className={checkClassVal('Circle')} onClick={handaleTool}>Circle</li>
           <li className={checkClassVal('Triangle')} onClick={handaleTool}>Triangle</li>
           <li >
-          <span className="m-1">Fill Color</span>
+          <span className="m-0.5 text-[0.8rem]">Fill Color</span>
 
           <input type={'checkbox'} onChange={(e)=>setIsColorFill(e.target.checked)} value={isColorFill} id='size-slider' />
 
@@ -291,7 +291,7 @@ const checkClassVal = (val)=>{
 
         </ul>
 
-        <h2 className="font-[700]">Option</h2>
+        <h2 className="font-[700] text-[0.8rem]">Option</h2>
         <ul>
           <li className={checkClassVal('Eraser')} onClick={handaleTool}>Eraser</li>
           <li className={checkClassVal('Brush')} onClick={handaleTool}>Brush</li>
@@ -305,9 +305,9 @@ const checkClassVal = (val)=>{
             <input type={'range'} min='0' max='35' className="mt-2 slider" id='size-slider' value={brushWidth} onChange={(e)=>setBrushWidth(e.target.value)} />
           </li>
         </ul>
-        <button className="w-full p-2 mt-2 border border-red-500 rounded bg-red-50 " onClick={clearReactFun}>Clear</button>
-        <button className="w-full p-2 mt-2 border border-green-500 rounded bg-green-50 " onClick={()=>downloadPaint('logoDecal')}> Apply Mockup </button>
-        <button className="w-full p-2 mt-2 text-white bg-blue-500 rounded" onClick={()=>downloadPaint('fullDecal')} >Apply Texture</button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 border border-red-500 rounded bg-red-50 " onClick={clearReactFun}>Clear</button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 border border-green-500 rounded bg-green-50 " onClick={()=>downloadPaint('logoDecal')}> Apply Mockup </button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 text-white bg-blue-500 rounded" onClick={()=>downloadPaint('fullDecal')} >Apply Texture</button>
       </nav>
       <div >
         <canvas

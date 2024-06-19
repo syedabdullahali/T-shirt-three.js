@@ -61,7 +61,7 @@ const Texture = () => {
         <h2 className='text-lg font-bold'>Thread Texture </h2>
         <div className='grid grid-cols-6 gap-2 p-2 '>
             {imageArr.map((el)=>
-            <img src={el} className='w-32 h-32 bg-gray-300'
+            <img src={el} className='w-24 h-24 bg-gray-300'
              onClick={()=>{
                 state.fullDecal =el
                 state.fullDecal =el
@@ -69,7 +69,7 @@ const Texture = () => {
              />
             )}
 
-             <div onClick={()=>inputRef.current.click()}  className='w-32 h-32 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400'
+             <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400'
            
              >
               <input hidden  ref={inputRef} type='file' onChange={handleChange} />

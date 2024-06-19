@@ -10,10 +10,10 @@ const Controller = () => {
     <div className=' w-[810px] '>
       <nav className='w-100% flex'>
          <button onClick={()=>setActiveNav(1)} 
-         className={`border p-4 flex-1  ${activeNav===1?"bg-blue-50 border-blue-400":""} `}>
+         className={`border p-3 flex-1 text-[0.8rem]  ${activeNav===1?"bg-blue-50 border-blue-400":""} `}>
           Brush Paint</button>
-         <button onClick={()=>setActiveNav(2)} className={`border p-4 flex-1 ${activeNav===2?"bg-blue-50 border-blue-400":""}`}> Texture</button>
-         <button onClick={()=>setActiveNav(3)} className={`border p-4 flex-1 ${activeNav===3?"bg-blue-50 border-blue-400":""}`}>Mockup</button>
+         <button onClick={()=>setActiveNav(2)} className={`border text-[0.8rem] p-3 flex-1 ${activeNav===2?"bg-blue-50 border-blue-400":""}`}> Texture</button>
+         <button onClick={()=>setActiveNav(3)} className={`border text-[0.8rem] p-3 flex-1 ${activeNav===3?"bg-blue-50 border-blue-400":""}`}>Mockup</button>
 
          {/* <button className='p-4 border shrink-1'>DT Print</button>
          <button className='p-4 border '>All Texture</button> */}
