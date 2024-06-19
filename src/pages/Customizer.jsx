@@ -124,6 +124,7 @@ filter tab. It takes a `tabName` parameter, which represents the name of the sel
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
+
           </motion.div>
           
           {/* filter tabs */}
