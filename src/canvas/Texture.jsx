@@ -24,9 +24,7 @@ const Texture = () => {
         texture3,
         texture4,
         texture5,
-        texture6,
-        texture7,
-        texture8
+      
     ]
 
 
@@ -50,6 +48,7 @@ const Texture = () => {
          <PhotoshopPicker 
                  onChange={(color) => state.color = color.hex}
                  color={snap.color}
+                 size='80%'
 
          />
          <MaterialPicker styles={{width:"200px"}} className='flex-1'
@@ -59,9 +58,9 @@ const Texture = () => {
         </div>
     
         <h2 className='text-lg font-bold'>Thread Texture </h2>
-        <div className='grid grid-cols-6 gap-2 p-2 '>
+        <div className='grid grid-cols-6 gap-1 p-2 '>
             {imageArr.map((el)=>
-            <img src={el} className='w-24 h-24 bg-gray-300'
+            <img src={el} className='w-full h-24 bg-gray-300 rounded cursor-pointer  '
              onClick={()=>{
                 state.fullDecal =el
                 state.fullDecal =el
@@ -69,7 +68,8 @@ const Texture = () => {
              />
             )}
 
-             <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400'
+             <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white cursor-pointer
+              bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400 rounded'
            
              >
               <input hidden  ref={inputRef} type='file' onChange={handleChange} />

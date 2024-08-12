@@ -90,14 +90,14 @@ const Home = () => {
         <h1 className='font-black text-7xl '>
                 <br className="hidden xl:block" /> UNLEASH YOUR STYLE
 
-             </h1>
+        </h1>
         
-            <p className="px-1 my-8 text-2xl font-normal text-gray-600 max-w-3/4">
+            <p className="px-1 my-8 text-xl font-normal text-gray-600 max-w-3/4">
             Create your own unique shirt with our <strong>cutting-edge 3D</strong>  customization tool. Express your creativity and make a statement with a design that's all you.
             </p>
             <button
             onClick={() => navigate('/degine')}
-            className='px-8 py-4 mt-4 text-xl text-white bg-black rounded-lg'> Start Creating </button>
+            className='px-6 py-3 mt-4 text-xl text-white bg-black rounded-lg'> Start Creating </button>
 
            
 

@@ -49,7 +49,7 @@ function App() {
 
 
   return (
-    <main className="flex transition-all ease-in bg-gray-100 app ">
+    <main className="flex transition-all ease-in bg-gray-50 app ">
       <BrowserRouter >
       <Routes>
         <Route path="/" element={<Home />} />

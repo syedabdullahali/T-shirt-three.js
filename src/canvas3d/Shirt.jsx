@@ -9,36 +9,23 @@ import state from '../store';
 
 const Shirt = ({zoom}) => {
   const snap = useSnapshot(state);
-  const { nodes, materials } = useGLTF('/shirt_baked.glb');
-
-  console.log(materials.lambert1)
+  const { nodes, materials } = useGLTF(snap.designType);
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
   const leftFullDecal = useTexture(snap.leftFullDecal);
-  // const fullTexture = useTexture(snap.fullDecal);
+  const fullTextTexture =useTexture(snap.fullTextTexture);
+  const fullPaintTexture = useTexture(snap.fullPaintDecal);
   const bodyMaterial = materials.bodyMaterial;
   // const sleevesMaterial = materials.sleevesMaterial;
 
   
 
-console.log(snap.fullDecal)
 
-
-  // useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta));
-
-  useFrame((state, delta) => {
-    // easing.dampC(bodyMaterial.color, 'red', 0.25, delta);
-    // easing.dampC(materials.lambert1.emissive, 'red', 1, delta);
-    easing.dampC(materials.lambert1.
-      emissive
-      , snap.color, 0.25, delta)
-    
+  useFrame((state, delta) => {  
+    easing.dampC(materials.lambert1.emissive,snap.color, 0.25, delta)    
     easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
-    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
-
   });
-  console.log(materials.lambert1)
 
   const stateString = JSON.stringify(snap);
   
@@ -54,6 +41,7 @@ console.log(snap.fullDecal)
         scale={(zoom/50)}
       >
         {/* T-shirt full texture */}
+
         { (
           <Decal 
             position={[0, 0, 0]}
@@ -62,6 +50,26 @@ console.log(snap.fullDecal)
             map={fullTexture}
           />
         )}
+       
+
+      { (
+          <Decal 
+            position={[0, 0,0.5]}
+            rotation={[0, 0, 0]}
+            scale={1}
+            map={fullTextTexture}
+          />
+        )}
+
+        { (
+          <Decal 
+            position={[0, 0,0]}
+            rotation={[0, 0, 0]}
+            scale={1}
+            map={fullPaintTexture}
+          />
+        )}
+        
 
 {/* {(
   <Decal 
@@ -132,13 +140,15 @@ console.log(snap.fullDecal)
         {/* T-shirt logo*/}
         {snap.isLogoTexture && (
           <Decal 
-            position={[snap.mockupXposition/500, snap.mockupYposition/800, 0.15]}
+            position={[snap.mockupXposition/500, snap.mockupYposition/200, 0.15]}
             rotation={[0, 0, 0]}
             scale={snap.size/200}
             map={logoTexture}
             {...{ mapAnisotropy: 16, depthTest: false, depthWrite: true }}
           />
         )}
+
+
       </mesh>
     </group>
   )

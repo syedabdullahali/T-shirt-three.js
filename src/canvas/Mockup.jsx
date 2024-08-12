@@ -1,15 +1,26 @@
 import { useState,useRef } from 'react'
-import Mokeup from '../assets/Mockup/125-1254428_followyourdreams-dreams-words-text-letters-quote-quotes-positive.png'
-import Mokeup2 from '../assets/Mockup/d6f3f685f1aa99302aa238b75fcc0a1b (1).jpg'
+import Mokeup from '../assets/Mockup/3D_Cartoon_preview.png'
+import Mokeup2 from '../assets/Mockup/364-removebg-preview.png'
+import Mokeup3 from '../assets/Mockup/MockeUpSunday.png'
+import Mokeup4 from '../assets/Mockup/MockFollow.png'
+import Mokeup5 from '../assets/Mockup/MockUpGlitter.png'
+
+
+
+
 import state from '../store'
 import { useSnapshot } from 'valtio'
+import transparent from '../assets/transparent_rectangle.svg.png';
 
 const Mockup = () => {
   const snap = useSnapshot(state)
 
     const tshirArr = [
         Mokeup,
-        Mokeup2  
+        Mokeup2,
+        Mokeup3,  
+        Mokeup4,
+        Mokeup5
     ]
     
 
@@ -59,26 +70,23 @@ const Mockup = () => {
       <input type={'range'} min='10' max='100' className="mb-8 slider " id='size-slider'  
       value={mockupAtr.mockupYposition} style={{width:"100%"}} onChange={(e)=>setMocupAtr(prev=>({...prev,mockupYposition:e.target.value}))} />
       <button className='w-full px-6 py-1 mt-4 text-[0.9rem] text-white bg-blue-400 rounded' onClick={()=>handaleApplyMockeUp()}> Apply Mockup </button>
-      <button className='w-full px-6 py-1 mt-3 text-[0.9rem] text-red-400 border border-red-400 rounded'>Remove Mockup </button>
+      <button  onClick={()=>{state.logoDecal=transparent}} className='w-full px-6 py-1 mt-3 text-[0.9rem] text-red-400 border border-red-400 rounded'>Remove Mockup </button>
       </div>
 
-      
-      
     </div>
- 
-    <button className='block px-6 py-2 mx-2 mt-3 ml-auto text-[0.9rem] text-white bg-blue-400 rounded w-fit'>Create Mockup</button>
-    <h2 className='font-[600] text-[0.9rem] my-1'>Thread Texture </h2>
+     <h2 className='font-[600] text-[1.2rem] m-1'>Mockup</h2>
 
     <div className='grid grid-cols-6 gap-2 p-2 '>
       
         {tshirArr.map((el)=>
-        <img src={el} className='w-24 h-24 bg-gray-300'
+        <img src={el} 
+        className=' h-24 border rounded cursor-pointer'
          onClick={()=>{
             state.logoDecal =el
          }}
          />
         )}
-          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400'
+          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400 rounded cursor-pointer'
            
            >
             <input hidden  ref={inputRef} type='file' onChange={handleChange} />

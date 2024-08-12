@@ -1,5 +1,6 @@
 import React, { useRef, useEffect,useState } from "react";
 import { SketchPicker  } from "react-color";
+import transparent from '../assets/transparent_rectangle.svg.png';
 import state from "../store";
 // import ReactDOM from "react-dom";
 // import { Canvas, extend, useThree } from "react-three-fiber";
@@ -136,7 +137,7 @@ function useCanvas(callback) {
 
     // Get canvas dimensions
     const { width, height } = canvas;
-   
+    ctx.clearRect(0, 0, width, height);
     ctx.moveTo(200, 100); // Start point
 ctx.lineTo(400, 100); // Right shoulder
 ctx.lineTo(400, 300); // Right side
@@ -278,7 +279,7 @@ const checkClassVal = (val)=>{
     <div className="flex w-[600px]  ">
       <nav className="p-1">
         <h2 className="font-[700] text-[0.8rem]">Shapes</h2>
-        <ul>
+        <ul className="grid grid-cols-2 gap-1">
           <li className={checkClassVal('Rectangle')} onClick={handaleTool}>Rectangle</li>
           <li className={checkClassVal('Circle')} onClick={handaleTool}>Circle</li>
           <li className={checkClassVal('Triangle')} onClick={handaleTool}>Triangle</li>
@@ -292,12 +293,14 @@ const checkClassVal = (val)=>{
         </ul>
 
         <h2 className="font-[700] text-[0.8rem]">Option</h2>
-        <ul>
-          <li className={checkClassVal('Eraser')} onClick={handaleTool}>Eraser</li>
-          <li className={checkClassVal('Brush')} onClick={handaleTool}>Brush</li>
+        <ul className="grid grid-cols-2 gap-1">
+        <li className={checkClassVal('Eraser')} onClick={handaleTool}>Eraser</li>
+        <li className={checkClassVal('Brush')} onClick={handaleTool}>Brush</li>
+        </ul>
+        <ul >
+         
 
           <SketchPicker color={color} onChange={(e)=>{
-            console.log(e)
             setColor(e)
           }}  />
 
@@ -307,7 +310,10 @@ const checkClassVal = (val)=>{
         </ul>
         <button className="w-full text-[0.8rem] p-1 mt-1 border border-red-500 rounded bg-red-50 " onClick={clearReactFun}>Clear</button>
         <button className="w-full text-[0.8rem] p-1 mt-1 border border-green-500 rounded bg-green-50 " onClick={()=>downloadPaint('logoDecal')}> Apply Mockup </button>
-        <button className="w-full text-[0.8rem] p-1 mt-1 text-white bg-blue-500 rounded" onClick={()=>downloadPaint('fullDecal')} >Apply Texture</button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 text-black border-red-500 rounded border bg-red-50"  onClick={()=>{state.logoDecal=transparent}} >Remove Mockup</button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 text-white bg-blue-500 rounded" onClick={()=>downloadPaint('fullPaintDecal')} >Apply Texture</button>
+        <button className="w-full text-[0.8rem] p-1 mt-1 text-black border-red-500 rounded border bg-red-50"  onClick={()=>{state.fullPaintDecal=transparent}} >Remove Texture</button>
+
       </nav>
       <div >
         <canvas
