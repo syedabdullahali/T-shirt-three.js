@@ -5,9 +5,6 @@ import texture2 from '../assets/Texture/45-degree-fabric-dark.png'
 import texture3 from '../assets/Texture/45-degree-fabric-light.png'
 import texture4 from '../assets/Texture/60-lines.png'
 import texture5 from '../assets/Texture/absurdity.png'
-import texture6 from '../assets/Texture/ag-square.png'
-import texture7 from '../assets/Texture/always-grey.png'
-import texture8 from '../assets/Texture/arabesque.png'
 
 import { useSnapshot } from 'valtio'
 import state from '../store';

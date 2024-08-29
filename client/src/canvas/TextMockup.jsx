@@ -9,7 +9,6 @@ import { useSnapshot } from 'valtio'
 
 const TextMockup = () => {
 
-
   const [textMokeUps,setMokeUpes] = useState([])
   const [inputVal,setInputVal] = useState('')
   const [selectedItemIndex,setSelectedItemIndex] = useState(-1) 
@@ -79,7 +78,7 @@ const TextMockup = () => {
     updateColorByIndex(selectedItemIndex,color.hex,inputVal,fontSize,selectedFontFamiliy)
   },[color,inputVal,fontSize,selectedFontFamiliy])
 
-    console.log(fontSize)
+    // console.log(fontSize)
   return (
     <>
     <div className='flex'>

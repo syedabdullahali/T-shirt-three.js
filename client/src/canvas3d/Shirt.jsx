@@ -140,11 +140,12 @@ const Shirt = ({zoom}) => {
         {/* T-shirt logo*/}
         {snap.isLogoTexture && (
           <Decal 
-            position={[snap.mockupXposition/500, snap.mockupYposition/200, 0.15]}
+            position={[snap.mockupXposition/20000, -(snap.mockupYposition/1500), 0.15]}
             rotation={[0, 0, 0]}
             scale={snap.size/200}
             map={logoTexture}
-            {...{ mapAnisotropy: 16, depthTest: false, depthWrite: true }}
+            
+            {...{ mapAnisotropy: 10, depthTest: false, depthWrite: true }}
           />
         )}
 

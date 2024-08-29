@@ -13,13 +13,13 @@ const ColorPicker = () => {
     }
 
     function handleCancel(color) {
-        console.log("Cancelled color selection",color);
+        // console.log("Cancelled color selection",color);
         // Optionally handle cancelling behavior, such as reverting to previous color
     }
 
     return (
         <>
-            <PhotoshopPicker     color={value} onChange={handleChange} onAccept={handleAccept} onCancel={handleCancel} />
+            <PhotoshopPicker  color={value} onChange={handleChange}  onAccept={handleAccept} onCancel={handleCancel} />
         </>
     );
 }

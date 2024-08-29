@@ -1,5 +1,5 @@
-import { SketchPicker  } from "react-color";
-import fontFamilies from "../config/font"
+// import { SketchPicker  } from "react-color";
+// import fontFamilies from "../config/font"
 import React, { useState ,useRef} from 'react';
 import html2canvas from 'html2canvas';
 import state from '../store';
@@ -23,6 +23,8 @@ const TextMockup = () => {
   const [color,setColor] = useState('black')
   const [fontSize,setFontSize] = useState(15)
   const [selectedFontFamiliy,setFontFamily] = useState("sen-serif")
+  const [position, setPosition] = useState({ left: 0, top: 0 });
+
   const snap = useSnapshot(state)
 
   const divRef = useRef(null)
@@ -102,56 +104,22 @@ const TextMockup = () => {
     <>
     <div className='flex'>
         <div ref={divRef}   style={{ padding: '20px', backgroundColor: 'transparent', color: 'black' }}
-         className='w-full overflow-x-hidden overflow-b-hidden shrink-1 border ml-1 h-[28rem] relative'>
-           {
-            textMokeUps.map((el,index)=> <MoveMokup 
-             color={el.color} content={el.content}
-             onClick={()=>{
-              if(selectedItemIndex===index){
-                setSelectedItemIndex(-1)
-                setInputVal('')
-                setFontSize(15)
-              }else{
-                setSelectedItemIndex(index)
-                setInputVal(el.content)  
-                setFontSize(el.fontSize)
-              }
-            }}
-             isSelected={index===selectedItemIndex}
-             fontSize={el.fontSize}
-             fontFamily={el.fontFamily}
-             onDelete={()=>{HandaleRemoveEl(index)}}
-             />)
-           }
+         className='w-full  overflow-x-hidden overflow-b-hidden shrink-1 border ml-1 h-[28rem] relative'> 
+           <MoveMokup imageUrl={snap.logoDecal} setPosition={setPosition} position={position} size={snap.size+"%"}/>     
         </div>
-{/*      
-        <div className='w-fit bg-white '>
 
-        <SketchPicker color={color}  onChange={(e)=>{setColor(e)}} />
-
-           <div className="w-[130px]">
-
-            
-          <label className="mt-2">Font Size</label>
-          <input type="range" min={10} max={100} value={fontSize} onChange={(el)=>{setFontSize(el.target.value)}} 
-          className="w-[170px] m-1 ml-[10px] cursor-pointer"/>
-
-           </div>
-
-        <div className="w-[190px] h-[11.8rem] overflow-y-scroll border flex flex-wrap">
-        {fontFamilies.map((el)=><p onClick={()=>{setFontFamily(el)}} className="border p-2 break-words m-1 cursor-pointer rounded-md" style={{fontFamily:el}}>{el}</p>)}
-        </div>
-        </div> */}
-
-        {/* <canvas ref={canvasRef} width={200} style={{ marginTop: '20px', border: '1px solid black' }}></canvas> */}
 
     </div>
-    <div >
-    <input type="range" min={10} max={100} value={fontSize} onChange={(el)=>{setFontSize(el.target.value)}} 
-          className="w-[170px] m-1 ml-[10px] cursor-pointer"/>
+    <div className="flex p-2" >
+    <input type="range" min={10} max={100} value={snap.size} 
+    onChange={(el)=>{state.size = el.target.value}} 
+          className="w-full  mx-4 ml-[10px] cursor-pointer"/>
 
     <div>
-    <button className='w-full px-6 py-1 mt-4 text-[0.9rem] text-white bg-blue-400 rounded' onClick={()=>handaleApplyMockeUp()}> Apply Mockup </button>
+    <button className='w-full px-6 py-1 mt-4 text-[0.9rem] text-white bg-blue-400 rounded' onClick={()=>{
+      state.mockupXposition = position.left
+      state.mockupYposition = position.top
+    }}> Apply Mockup </button>
     <button  onClick={()=>{state.logoDecal=transparent}} className='w-full px-6 py-1 mt-3 text-[0.9rem] text-red-400 border border-red-400 rounded'>Remove Mockup </button>    
     </div>      
     </div>
@@ -182,10 +150,10 @@ const TextMockup = () => {
 export default TextMockup
 
 
-const MoveMokup = ({content,color,fontFamily,onClick,isSelected,fontSize,onDelete}) => {
-  const [position, setPosition] = useState({ left: 0, top: 0 });
+const MoveMokup = ({imageUrl,size,position,setPosition}) => {
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -220,7 +188,39 @@ const MoveMokup = ({content,color,fontFamily,onClick,isSelected,fontSize,onDelet
   };
 
   return (
-    <h2
+    // <h2
+    //   onMouseDown={handleMouseDown}
+    //   onMouseMove={handleMouseMove}
+    //   onMouseUp={handleMouseUp}
+    //   style={{
+    //     left: `${position.left}px`,
+    //     top: `${position.top}px`,
+    //     position: 'absolute',
+    //     cursor: isDragging ? 'grabbing' : 'grab',
+    //     color:color,
+    //     fontFamily:fontFamily,
+    //     fontSize:fontSize+"px"
+    //   }}
+    //   onClick={()=>{
+    //     onClick()
+    //   }}
+    //   className={`movable-div break-word group  hover:bg-blue-50 rounded p-2 ${isSelected?"border-blue-400 rounded  border-2 ":" border-transparent"}`}
+    // >
+    //  {content}
+
+    //  <button onClick={()=>{
+    //           onDelete()
+    //  }} className="group-hover:block hidden  absolute -right-6 -top-6 p-2 z-[200] rounded-full bg-red-500 text-white" >
+    //  <svg width={'20px'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+    //  <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637
+    //   16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855
+    //    12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg> 
+    //  </button>
+
+    // </h2>
+
+    <img
+      src={imageUrl} 
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -229,27 +229,12 @@ const MoveMokup = ({content,color,fontFamily,onClick,isSelected,fontSize,onDelet
         top: `${position.top}px`,
         position: 'absolute',
         cursor: isDragging ? 'grabbing' : 'grab',
-        color:color,
-        fontFamily:fontFamily,
-        fontSize:fontSize+"px"
       }}
       onClick={()=>{
         onClick()
       }}
-      className={`movable-div break-word group  hover:bg-blue-50 rounded p-2 ${isSelected?"border-blue-400 rounded  border-2 ":" border-transparent"}`}
-    >
-     {content}
-
-     <button onClick={()=>{
-              onDelete()
-     }} className="group-hover:block hidden  absolute -right-6 -top-6 p-2 z-[200] rounded-full bg-red-500 text-white" >
-     <svg width={'20px'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-     <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637
-      16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855
-       12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg> 
-     </button>
-
-    </h2>
+      width={size+"%"}
+    />   
   );
 };
 
