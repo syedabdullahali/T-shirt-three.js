@@ -2,6 +2,7 @@ import React, { useRef, useEffect,useState } from "react";
 import { SketchPicker  } from "react-color";
 import transparent from '../assets/transparent_rectangle.svg.png';
 import state from "../store";
+import { BrushIcon, CircleIcon, CircleOutlineIcon, EraserIcon, RectangleIcon, RectangleOutline, TriangleIcon, TriangleOutlineIcon } from "../icon/icon";
 // import ReactDOM from "react-dom";
 // import { Canvas, extend, useThree } from "react-three-fiber";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -250,29 +251,11 @@ const downloadPaint = (key)=>{
 
 // Create an image from the canvas data
 var image = canvasRef.current.toDataURL("image/png");
-
 state[key] = image
-
-console.log(image)
-
-// // Create a link element
-// var link = document.createElement('a');
-// link.download = `${new Date()}image.png`; // Set the filename for the downloaded image
-// link.href = image; // Set the href attribute to the data URL of the canvas image
-
-// // Append the link to the document body
-// document.body.appendChild(link);
-
-// // Trigger a click event on the link to start the download
-// link.click();
-
-// // Remove the link from the document body
-// document.body.removeChild(link);
-
 }
 
 const checkClassVal = (val)=>{
-  return 'rounded text-[0.8rem] '+ (selectedToll.includes(val)?"text-blue-500 p-1 border mt-1 bg-white border-blue-400 " :"p-1 mt-1 cursor-pointer  p-1 border  bg-white ")
+  return 'flex font-bold rounded text-[0.8rem] '+ (selectedToll.includes(val)?"text-blue-500 p-1 border mt-1 bg-white border-blue-400 " :"p-1 mt-1 cursor-pointer  p-1 border  bg-white ")
 }
 
   return (
@@ -280,9 +263,17 @@ const checkClassVal = (val)=>{
       <nav className="p-1">
         <h2 className="font-[700] text-[0.8rem]">Shapes</h2>
         <ul className="grid grid-cols-2 gap-1">
-          <li className={checkClassVal('Rectangle')} onClick={handaleTool}>Rectangle</li>
-          <li className={checkClassVal('Circle')} onClick={handaleTool}>Circle</li>
-          <li className={checkClassVal('Triangle')} onClick={handaleTool}>Triangle</li>
+          <li className={checkClassVal('Rectangle')} onClick={handaleTool}>Rectangle 
+            {isColorFill?<RectangleIcon className='ml-1' width='18px'/>:<RectangleOutline  width='18px' className='ml-1'  />}
+            </li>
+          <li className={checkClassVal('Circle')} onClick={handaleTool}>Circle
+          {isColorFill?<CircleIcon className='ml-1' width='18px'/>:<CircleOutlineIcon  width='18px' className='ml-1'  />}
+
+          </li>
+          <li className={checkClassVal('Triangle')} onClick={handaleTool}>Triangle
+          {isColorFill?<TriangleIcon className='ml-1' width='18px'/>:<TriangleOutlineIcon  width='18px' className='ml-1'  />}
+
+          </li>
           <li >
           <span className="m-0.5 text-[0.8rem]">Fill Color</span>
 
@@ -293,9 +284,9 @@ const checkClassVal = (val)=>{
         </ul>
 
         <h2 className="font-[700] text-[0.8rem]">Option</h2>
-        <ul className="grid grid-cols-2 gap-1">
-        <li className={checkClassVal('Eraser')} onClick={handaleTool}>Eraser</li>
-        <li className={checkClassVal('Brush')} onClick={handaleTool}>Brush</li>
+        <ul className="grid grid-cols-2 gap-1 mb-1">
+        <li className={checkClassVal('Eraser')} onClick={handaleTool}>Eraser <EraserIcon className='ml-1' width='18px' /></li>
+        <li className={checkClassVal('Brush')} onClick={handaleTool}>Brush <BrushIcon className='ml-1' width='18px'  /></li>
         </ul>
         <ul >
          
@@ -321,7 +312,7 @@ const checkClassVal = (val)=>{
           onMouseMove={(e) => drawing(e)}
           className="bg-white border"
           height={740}
-          width={600}
+          width={510}
           onMouseDown={startDraw}
           onMouseUp={stopDraw}
         ></canvas>

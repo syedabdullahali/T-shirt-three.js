@@ -1,5 +1,3 @@
-// import { SketchPicker  } from "react-color";
-// import fontFamilies from "../config/font"
 import React, { useState ,useRef} from 'react';
 import html2canvas from 'html2canvas';
 import state from '../store';
@@ -11,6 +9,7 @@ import Mokeup2 from '../assets/Mockup/364-removebg-preview.png'
 import Mokeup3 from '../assets/Mockup/MockeUpSunday.png'
 import Mokeup4 from '../assets/Mockup/MockFollow.png'
 import Mokeup5 from '../assets/Mockup/MockUpGlitter.png'
+import { UploadFileIcon } from '../icon/icon';
 
 
 
@@ -104,7 +103,7 @@ const TextMockup = () => {
     <>
     <div className='flex'>
         <div ref={divRef}   style={{ padding: '20px', backgroundColor: 'transparent', color: 'black' }}
-         className='w-full  overflow-x-hidden overflow-b-hidden shrink-1 border ml-1 h-[28rem] relative'> 
+         className='w-full  overflow-x-hidden overflow-b-hidden shrink-1 border ml-1 h-[22rem] relative'> 
            <MoveMokup imageUrl={snap.logoDecal} setPosition={setPosition} position={position} size={snap.size+"%"}/>     
         </div>
 
@@ -129,17 +128,20 @@ const TextMockup = () => {
       
         {tshirArr.map((el)=>
         <img src={el} 
-        className=' h-24 border rounded cursor-pointer'
+        className=' h-24  rounded cursor-pointer shadow border-4 border-white'
          onClick={()=>{
             state.logoDecal =el
          }}
          />
         )}
-          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400 rounded cursor-pointer'
+        
+          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 pt-4 rounded cursor-pointer'
            
            >
             <input hidden  ref={inputRef} type='file' />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM4 5V19H20V7H11.5858L9.58579 5H4ZM13 13V17H11V13H8L12 9L16 13H13Z"></path></svg>           </div>
+            <UploadFileIcon  width='60px'/>
+                 
+          </div>
     </div>
    
  
@@ -188,37 +190,6 @@ const MoveMokup = ({imageUrl,size,position,setPosition}) => {
   };
 
   return (
-    // <h2
-    //   onMouseDown={handleMouseDown}
-    //   onMouseMove={handleMouseMove}
-    //   onMouseUp={handleMouseUp}
-    //   style={{
-    //     left: `${position.left}px`,
-    //     top: `${position.top}px`,
-    //     position: 'absolute',
-    //     cursor: isDragging ? 'grabbing' : 'grab',
-    //     color:color,
-    //     fontFamily:fontFamily,
-    //     fontSize:fontSize+"px"
-    //   }}
-    //   onClick={()=>{
-    //     onClick()
-    //   }}
-    //   className={`movable-div break-word group  hover:bg-blue-50 rounded p-2 ${isSelected?"border-blue-400 rounded  border-2 ":" border-transparent"}`}
-    // >
-    //  {content}
-
-    //  <button onClick={()=>{
-    //           onDelete()
-    //  }} className="group-hover:block hidden  absolute -right-6 -top-6 p-2 z-[200] rounded-full bg-red-500 text-white" >
-    //  <svg width={'20px'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-    //  <path d="M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637
-    //   16.9504L16.9495 18.3646L11.9997 13.4149L7.04996 18.3646L5.63574 16.9504L10.5855
-    //    12.0007L5.63574 7.05093L7.04996 5.63672L11.9997 10.5865Z"></path></svg> 
-    //  </button>
-
-    // </h2>
-
     <img
       src={imageUrl} 
       onMouseDown={handleMouseDown}

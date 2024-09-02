@@ -133,6 +133,10 @@ code {
   border-radius: 4px;
   color: #304455;
 }
+
+.photoshop-picker {
+  background-color: white !important;
+}
 /* .sketch-picker {
   width:120px !important;
   

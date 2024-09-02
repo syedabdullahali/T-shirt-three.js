@@ -29,7 +29,7 @@ const Otp: React.FC<OTPProps> = ({ email,isEmailCheck,handaleConfirmEmailSteps }
         const dataAuth = await data.json();
         localStorage.setItem('user-auth', JSON.stringify({ token: dataAuth.token, name: dataAuth.name,
           email: dataAuth.email}));
-        navigate('/degine');
+        navigate('/3D-degine/degine');
       }else{
         toast.error("Invalid OTP")
       }

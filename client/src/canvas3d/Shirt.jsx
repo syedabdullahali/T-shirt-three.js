@@ -17,8 +17,6 @@ const Shirt = ({zoom}) => {
   const fullTextTexture =useTexture(snap.fullTextTexture);
   const fullPaintTexture = useTexture(snap.fullPaintDecal);
   const bodyMaterial = materials.bodyMaterial;
-  // const sleevesMaterial = materials.sleevesMaterial;
-
   
 
 

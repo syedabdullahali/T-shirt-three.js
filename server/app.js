@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/user-account',require("./route/client/user-account"));
+app.use('/admin',require("./route/admin/adminAccount"));
 
 
 

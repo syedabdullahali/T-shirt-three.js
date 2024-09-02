@@ -8,6 +8,7 @@ import texture5 from '../assets/Texture/absurdity.png'
 
 import { useSnapshot } from 'valtio'
 import state from '../store';
+import { UploadFileIcon } from '../icon/icon';
 
 
 const Texture = () => {
@@ -39,25 +40,21 @@ const Texture = () => {
   
 
   return (
-    <div>
+    <div className='m-2'>
         <h2 className='text-lg font-bold'>Background Color</h2>
-        <div className='flex'>
+        <div className='flex '>
          <PhotoshopPicker 
                  onChange={(color) => state.color = color.hex}
                  color={snap.color}
                  size='80%'
 
          />
-         <MaterialPicker styles={{width:"200px"}} className='flex-1'
-         
-         />
-
         </div>
     
         <h2 className='text-lg font-bold'>Thread Texture </h2>
         <div className='grid grid-cols-6 gap-1 p-2 '>
             {imageArr.map((el)=>
-            <img src={el} className='w-full h-24 bg-gray-300 rounded cursor-pointer  '
+            <img src={el} className='w-full h-24 bg-gray-300 rounded cursor-pointer shadow border-4 border-white '
              onClick={()=>{
                 state.fullDecal =el
                 state.fullDecal =el
@@ -65,11 +62,13 @@ const Texture = () => {
              />
             )}
 
-          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 text-white cursor-pointer
-              bg-gray-300 border-2 hover:text-blue-400 er-2 text hover:border-blue-400 rounded'
+          <div onClick={()=>inputRef.current.click()}  className='w-24 h-24 pt-4 cursor-pointer
+               text-black  text  rounded'
             >
               <input hidden  ref={inputRef} type='file' onChange={handleChange} />
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM4 5V19H20V7H11.5858L9.58579 5H4ZM13 13V17H11V13H8L12 9L16 13H13Z"></path></svg>             </div>
+              <UploadFileIcon width='60px'/>
+          </div>
+
         </div>
    
     </div>

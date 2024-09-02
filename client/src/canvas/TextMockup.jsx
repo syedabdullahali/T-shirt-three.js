@@ -119,8 +119,8 @@ const TextMockup = () => {
 
            </div>
 
-        <div className="w-[190px] h-[11.8rem] overflow-y-scroll border flex flex-wrap">
-        {fontFamilies.map((el)=><p onClick={()=>{setFontFamily(el)}} className="border p-2 break-words m-1 cursor-pointer rounded-md" style={{fontFamily:el}}>{el}</p>)}
+        <div className="w-[190px] h-[8.6rem] overflow-y-scroll border flex flex-wrap">
+        {fontFamilies.map((el)=><p onClick={()=>{setFontFamily(el)}} className="border-2 border-white shadow p-2 break-words m-1 cursor-pointer rounded-md" style={{fontFamily:el}}>{el}</p>)}
         </div>
         </div>
 

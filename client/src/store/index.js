@@ -3,8 +3,6 @@ import transparent from '../assets/transparent_rectangle.svg.png';
 import tShirt from '../../public/shirt_baked.glb';
 import logo from '../assets/Mockup/3D_Cartoon_preview.png'
 
-// console.log(tShirt)
-
 const state = proxy({
   intro: false,
   color: '#5B0D1F',

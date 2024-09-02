@@ -9,7 +9,7 @@ const LoginModel = () => {
 
     useEffect(() => {
     const timer = setTimeout(() => {
-        navugate("/degine");
+        navugate("/3D-degine/degine");
     }, 3000);
 
     return () => clearTimeout(timer); // Clean up the timeout on component unmount
